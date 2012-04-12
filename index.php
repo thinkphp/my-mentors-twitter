@@ -6,7 +6,7 @@
    <title><?php echo$title; ?></title>
    <style type="text/css">
     h1,h2, body { font-family:'gill sans','dejavu sans',verdana,sans-serif; }
-    h1 {
+    #myTitle h1 {
       margin-top: -20px;
       font-weight:bold;
       font-size:65px;
@@ -22,21 +22,24 @@
 	.tweet span	{ font-size:11px; color:#666; }
 	.clear	{ clear:both; }
       #control a {float: right;margin-right: 150px}
-.fork img {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.fork img {
-    border: 0 none;
-    vertical-align: middle;
-}
+     .fork img {
+           position: absolute;
+           right: 0;
+           top: 0;
+      }
+      .fork img {
+           border: 0 none;
+           vertical-align: middle;
+      }
    </style>
+   <link  href="CSS/MooDialog.css" rel="stylesheet" type="text/css" media="screen" />
    <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
    <script type="text/javascript">google.load("mootools", "1.4");</script>
-   <script type="text/javascript" src="Request.JSONP.js"></script>
-   <script type="text/javascript" src="Request.YQL.min.js"></script>
+   <script src="Request.JSONP.js"></script>
+   <script src="Request.YQL.min.js"></script>
+   <script src="http://moo.thinkphp.ro/playground/overlay/overlay.js"></script>
+   <script src="https://raw.github.com/thinkphp/MooDialog/master/MooDialog.js"></script>
+   <script src="https://raw.github.com/thinkphp/MooDialog/master/MooDialog.Request.js"></script>
 <?php
 echo <<<FORM
    <script type="text/javascript">
@@ -84,12 +87,26 @@ FORM;
 
          })
 
+
+        $('control').getElement('a').addEvent('click',function(e){
+
+		    e.stop();
+
+            new MooDialog.Request('commands.php', null, {
+                                  size: {
+                                         width: 500,
+                                         height: 300
+                                        },
+                                  title: 'Add/Update/Delete a User Twitter from List'
+            });
+        });
+
      })
 
    </script>
 </head>
 <body>
-<h1><?php echo$title; ?></h1>
+<div id="myTitle"><h1><?php echo$title; ?></h1></div>
 <a class="fork" href="https://github.com/thinkphp/my-mentors-twitter"><img alt="Fork me on GitHub" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 <div id="control"><a href="commands.php">Add Mentor</a></div>
 <?php echo$thedivs; ?>
