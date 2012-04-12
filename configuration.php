@@ -77,7 +77,7 @@
 
                      $this->updated = true;
 
-                    return array("id"=>$id, "real name" => $name);
+                    return array("status"=>"okay", "id"=>$id, "realname" => $name);
                  }
 
               return null; 
@@ -91,7 +91,7 @@
 
                      $this->updated = true;
 
-                    return array("delete"=>"yeah", "id" => $id);
+                    return array("status"=>"okay", "id" => $id);
                  }
 
               return null; 
