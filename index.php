@@ -4,106 +4,24 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
    <title><?php echo$title; ?></title>
-   <style type="text/css">
-    h1,h2, body { font-family:'gill sans','dejavu sans',verdana,sans-serif; }
-    #myTitle h1 {
-      margin-top: -20px;
-      font-weight:bold;
-      font-size:65px;
-      letter-spacing:2px;
-      color:#999;
-      margin-bottom:0;
-      position:relative;
-    }     
-	#tweets	{ margin: 20px 0 0 0; }
-	.tweet	{ padding:5px 10px; height:auto; clear:both; margin:5px 0; background:#eee; }
-	.tweet img	{ margin-right:10px; }
-	.tweet strong	{ color:navy; }
-	.tweet span	{ font-size:11px; color:#666; }
-	.clear	{ clear:both; }
-      #control a {float: right;margin-right: 150px}
-     .fork img {
-           position: absolute;
-           right: 0;
-           top: 0;
-      }
-      .fork img {
-           border: 0 none;
-           vertical-align: middle;
-      }
-   </style>
+   <link  href="CSS/style.css" rel="stylesheet" type="text/css" media="screen" />
    <link  href="CSS/MooDialog.css" rel="stylesheet" type="text/css" media="screen" />
    <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
    <script type="text/javascript">google.load("mootools", "1.4");</script>
-   <script src="Request.JSONP.js"></script>
-   <script src="Request.YQL.min.js"></script>
-   <script src="http://moo.thinkphp.ro/playground/overlay/overlay.js"></script>
-   <script src="https://raw.github.com/thinkphp/MooDialog/master/MooDialog.js"></script>
-   <script src="https://raw.github.com/thinkphp/MooDialog/master/MooDialog.Request.js"></script>
+   <script src="JS/basket.js"></script>
 <?php
 echo <<<FORM
    <script type="text/javascript">
-         var mentors = $out;
+           var mentors = $out;
+               basket.require('JS/Request.JSONP.js')
+                     .require('JS/Request.YQL.min.js')
+                     .require('JS/overlay.js')
+                     .require('JS/MooDialog.js')
+                     .require('JS/MooDialog.Request.js')
    </script>
-
 FORM;
 ?>
-   <script type="text/javascript">
-
-     window.addEvent('domready',function(){
-
-         var url = "select * from twitter.user.status where screen_name=#{username} and count=@count",
-             linkify = function(str) {
-             return str.replace(/(https?:\/\/[\w\-:;?&=+.%#\/]+)/gi, '<a href="$1">$1</a>')
-                       .replace(/(^|\W)@(\w+)/g, '$1<a href="http://twitter.com/$2">@$2</a>')
-                       .replace(/(^|\W)#(\w+)/g, '$1#<a href="http://search.twitter.com/search?q=%23$2">$2</a>')                              
-         }
-
-
-         Object.each(mentors,function(realname,username){
-
-             new Request.YQL(url, {
-
-                 onSuccess: function(data){
-
-                     var tweets = data.query.results.status;
-
-                     new Element('h2',{text: realname}).inject(username)  
-
-                     tweets.each(function(object){
-                         
-                        new Element('div',{
-                            html: '<img src="' + object.user.profile_image_url + '" align="left" alt="photo_profile" /> <strong>'+ object.user.name +'</strong><br/>'+
-                            linkify(object.text) + '<br/><span>' + object.created_at + ' via ' + object.source.replace('\\','') + '</span>',
-                            'class': 'tweet clear'
-                        }).inject(username);
-
-                     })
-             }},
-
-             {username: username, count: '7'}
-
-             ).send()
-
-         })
-
-
-        $('control').getElement('a').addEvent('click',function(e){
-
-		    e.stop();
-
-            new MooDialog.Request('commands.php', null, {
-                                  size: {
-                                         width: 500,
-                                         height: 300
-                                        },
-                                  title: 'Add/Update/Delete a User Twitter from List'
-            });
-        });
-
-     })
-
-   </script>
+<script type="text/javascript" src="JS/domready.js"></script>
 </head>
 <body>
 <div id="myTitle"><h1><?php echo$title; ?></h1></div>
