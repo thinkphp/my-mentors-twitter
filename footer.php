@@ -1,0 +1,1 @@
+<div id="ft"><p>Created by @<a href="http://twitter.com/thinkphp">thinkphp</a></p></div>

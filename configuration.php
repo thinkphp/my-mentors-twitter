@@ -1,8 +1,10 @@
 <?php
 
+    /* Configuration File Singleton */
     class Configuration {
 
-          //static instance for singleton
+          //static instance for singleton that 
+          //holds a single instantinating of the class
           static private $instance = NULL;
 
           //flag that indicate if the file ini is affected or not
@@ -14,16 +16,20 @@
           //the name file configuration
           const path = 'config/config.ini';
 
-          //constructor of class that is private parce que we use singleton and accepts only instance
+          //constructor of class that is private parce que we use singleton
+          //prevents users from instantiating the class directly. 
+          //they must use getInstance method
           private function __construct() {
 
+                  //if file exists then grab the content
                   if(file_exists(self::path)) {
 
+                         //turns ini file into array
                          $this->settings = parse_ini_file(self::path); 
                   }
           } 
 
-          //this method accepts only instance
+          //static method returns the only instantiation of the class
           public static function getInstance() {
 
                  if(self::$instance == NULL) {
@@ -37,6 +43,8 @@
           //destructor of class
           public function __destruct() {
 
+                 //if configuration hasn't changed, 
+                 //no need to update it on disk (FILE INI)
                  if(!$this->updated) {
 
                       return false;
@@ -45,20 +53,24 @@
                  //prepare the file for write
                  $fp = fopen($this->_getPath(), "w");
 
+                 //if handler is correct
                  if(!$fp) {
 
                     return false; 
                  } 
 
+                 //iterate through settins and overwrite 
+                 //INI File with the real version
                  foreach($this->settings as $id=>$name) {
 
                          fputs($fp, "$id = \"$name\"\n");
                  }
 
+                 //close the file
                  fclose($fp);
           }
 
-          //getter method
+          //getter method for ini file
           public function get($id) {
 
                  if(isset($this->settings[$id])) {
@@ -68,7 +80,7 @@
               return null;
           }
 
-          //setter method
+          //setter method for ini file
           public function set($id,$name) {
  
                  if(!isset($this->settings[$id]) || $this->settings[$id] != $name) {
@@ -83,6 +95,7 @@
               return null; 
           }
 
+          //delete from file ini
           public function del($id) {
 
                  if(isset($this->settings[$id])) {
@@ -97,12 +110,13 @@
               return null; 
           }
 
-          //get array of id=>realname
+          //Get Array of id=>realname
           public function getSettings() {
 
                  return $this->settings;
           } 
 
+          //prepare the path
           private function _getPath() { 
 
                   $this->saveConfig = str_replace('commands.php', '', $_SERVER['SCRIPT_FILENAME']);

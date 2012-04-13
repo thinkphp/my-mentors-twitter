@@ -140,6 +140,7 @@
                    } else {
 
                        getUrl(uri, function( text ) {
+
                               localStorage.setItem(key, text)
                               scripts[ scriptIndex ] = text
                               queueExec( localWaitCount )
@@ -164,8 +165,6 @@
                   }
 
              return this;
-           },
-
+           }
     }
-
 })(this, document)

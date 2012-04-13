@@ -43,8 +43,9 @@ window.addEvent('domready', function(){
          })
 
          //add a handler for event 'click' to first element A within 'control' div
-         $('control').getElement('a').addEvent('click', function( e ){
+         $('control').getElements('a')[0].addEvent('click', function( e ){
 
+                //prevent default
 		    e.stop();
 
             new MooDialog.Request('commands.php', null, {
@@ -54,5 +55,23 @@ window.addEvent('domready', function(){
                                         },
                                   title: 'Add/Update/Delete a User Twitter from List'
             });
-        });
+        })
+
+
+        //add a handler for event 'click' to the second element A within 'control' div to display the mentors
+        $('control').getElements('a')[1].addEvent('click', function( e ){
+
+                //prevent default
+		    e.stop();
+
+            new MooDialog.Request('showmentors.php', null, {
+                                  size: {
+                                         width: 500,
+                                         height: 300
+                                        },
+                                  title: 'My Mentors'
+            });
+
+        })
+
 })
