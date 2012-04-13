@@ -1,0 +1,26 @@
+h1,h2, body { font-family:'gill sans','dejavu sans',verdana,sans-serif; }
+    #myTitle h1 {
+      margin-top: -20px;
+      font-weight:bold;
+      font-size:65px;
+      letter-spacing:2px;
+      color:#999;
+      margin-bottom:0;
+      position:relative;
+    }     
+	#tweets	{ margin: 20px 0 0 0; }
+	.tweet	{ padding:5px 10px; height:auto; clear:both; margin:5px 0; background:#eee; }
+	.tweet img	{ margin-right:10px; }
+	.tweet strong	{ color:navy; }
+	.tweet span	{ font-size:11px; color:#666; }
+	.clear	{ clear:both; }
+      #control a {float: right;margin-right: 150px}
+     .fork img {
+           position: absolute;
+           right: 0;
+           top: 0;
+      }
+      .fork img {
+           border: 0 none;
+           vertical-align: middle;
+      }
