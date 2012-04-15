@@ -43,7 +43,7 @@ window.addEvent('domready', function(){
          })
 
          //add a handler for event 'click' to first element A within 'control' div
-         $('control').getElements('a')[0].addEvent('click', function( e ){
+         $('control').getElements('a')[1].addEvent('click', function( e ){
 
                 //prevent default
 		    e.stop();
@@ -59,7 +59,7 @@ window.addEvent('domready', function(){
 
 
         //add a handler for event 'click' to the second element A within 'control' div to display the mentors
-        $('control').getElements('a')[1].addEvent('click', function( e ){
+        $('control').getElements('a')[0].addEvent('click', function( e ){
 
                 //prevent default
 		    e.stop();
@@ -73,5 +73,4 @@ window.addEvent('domready', function(){
             });
 
         })
-
 })

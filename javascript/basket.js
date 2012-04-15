@@ -89,6 +89,7 @@
            add: function(uri, options, callback) {
 
                 options = options || {}
+
                 var key = storagePrefix + ( options.key || uri )
 
                 if(typeof options.overwrite === "undefined") {
@@ -98,10 +99,13 @@
                 if(localStorage.getItem( key )) {
 
                        if(options.overwrite) {
+
                          //overwrite the uri
                          saveUrl(uri, key, callback)
                        } 
+
                 } else {
+
                        //key doesn't exist, then add key as new entry
                        saveUrl(uri, key, callback)
                 }
@@ -111,7 +115,7 @@
 
            remove: function( key ) {
 
-                localStorage.remove(storagePrefix + key)  
+                localStorage.removeItem(storagePrefix + key)  
 
              return this
            },
