@@ -14,7 +14,7 @@ h1,h2, body { font-family:'gill sans','dejavu sans',verdana,sans-serif; }
 	.tweet strong	{ color:navy; }
 	.tweet span	{ font-size:11px; color:#666; }
 	.clear	{ clear:both; }
-      #control a {float: right;margin-right: 150px}
+
      .fork img {
            position: absolute;
            right: 0;
@@ -24,3 +24,38 @@ h1,h2, body { font-family:'gill sans','dejavu sans',verdana,sans-serif; }
            border: 0 none;
            vertical-align: middle;
       }
+
+      a:nth-child(2) {float: right;margin-right: 125px}
+
+  #control a{
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+    background-color: rgba(219,87,5,1);
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 500;
+    font-size: 1.8em;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+    box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+	width: 130px;	
+      text-align: center;
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	-ms-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
+}
+
+  #control a:active {
+    -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    top: 6px;
+}
+
+#ft {font-family: 'Yanone Kaffeesatz';letter-spacing: 3px;font-size: 1.3em}
+#ft a {color: orange;font-size: 1.3em;    font-weight: 500; }
