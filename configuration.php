@@ -16,6 +16,9 @@
           //the name file configuration
           const path = 'config/config.ini';
 
+          //the name of the file which calls configuration, default 'commands.php'
+          private $whichFile = 'commands.php';
+
           //constructor of class that is private parce que we use singleton
           //prevents users from instantiating the class directly. 
           //they must use getInstance method
@@ -116,10 +119,26 @@
                  return $this->settings;
           } 
 
-          //prepare the path
-          private function _getPath() { 
+          /**
+           * Update the settings Array that affects INI File configuration
+           * @param $newArr Array - the new Array updated
+           * @param $file Strin   - the name of the file which make the update, by default 'update.php'
+           */
+          public function setSettings($newArr, $file) {
 
-                  $this->saveConfig = str_replace('commands.php', '', $_SERVER['SCRIPT_FILENAME']);
+                $this->whichFile = $file;
+
+                $this->settings = $newArr;
+
+                $this->updated = true;
+
+              return $this->settings;
+          } 
+
+          //prepare the path
+          public function _getPath() { 
+
+                  $this->saveConfig = str_replace($this->whichFile, '', $_SERVER['SCRIPT_FILENAME']);
 
                   $this->saveConfig = $this->saveConfig . self::path; 
 

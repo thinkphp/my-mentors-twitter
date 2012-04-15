@@ -1,1 +1,1 @@
-<div id="control"><a href="commands.php">Add Mentor</a> <a href="showmentors.php">show mentors</a></div>
+<div id="control"><a href="showmentors.php">Settings</a><a href="commands.php">CRUD Mentor</a></div>

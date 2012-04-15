@@ -4,10 +4,12 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
    <title><?php echo$title; ?></title>
+   <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' rel='stylesheet' type='text/css'>
    <link  href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
    <link  href="css/MooDialog.css" rel="stylesheet" type="text/css" media="screen" />
    <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
    <script>google.load("mootools", "1.4");</script>
+   <script type="text/javascript" src="javascript/more.js"></script> 
    <script src="javascript/basket.js"></script>
 <?php
 echo <<<FORM
@@ -18,9 +20,8 @@ echo <<<FORM
                      .require('javascript/overlay.js')
                      .require('javascript/MooDialog.js')
                      .require('javascript/MooDialog.Request.js').wait(function(){
-                               basket.require('javascript/domready.js',{key: 'mydomready'})
+                               basket.require('javascript/domready.js',{key: 'domready'})
                      })
-
 </script>
 FORM;
 ?>
